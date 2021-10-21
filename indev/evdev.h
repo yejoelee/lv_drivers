@@ -21,7 +21,7 @@ extern "C" {
 #endif
 #endif
 
-#if USE_EVDEV || USE_BSD_EVDEV
+#if USE_EVDEV || USE_BSD_EVDEV || USE_SSR_EVDEV
 
 #ifdef LV_LVGL_H_INCLUDE_SIMPLE
 #include "lvgl.h"
@@ -44,7 +44,7 @@ extern "C" {
 /**
  * Initialize the evdev
  */
-void evdev_init(void);
+void evdev_init(int screen_width, int screen_height);
 /**
  * reconfigure the device file for evdev
  * @param dev_name set the evdev device filename
