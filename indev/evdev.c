@@ -52,7 +52,7 @@ int evdev_key_val;
 /**
  * Initialize the evdev interface
  */
-void evdev_init(void)
+void evdev_init(int screen_width, int screen_height)
 {
 #if USE_BSD_EVDEV
     evdev_fd = open(EVDEV_NAME, O_RDWR | O_NOCTTY);
