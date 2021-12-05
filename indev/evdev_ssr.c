@@ -14,6 +14,10 @@
 #include <fcntl.h>
 #include <linux/input.h>
 #include <errno.h>
+#include <pthread.h>
+
+#include "mi_sys.h"
+#include "st_fb.h"
 
 
 /*********************
@@ -92,13 +96,13 @@ bool evdev_set_file(char* dev_name)
  * @param data store the evdev data here
  * @return false: because the points are not buffered, so no more data to be read
  */
-void evdev_read(lv_indev_drv_t * drv, lv_indev_data_t * data)
+bool evdev_read(lv_indev_drv_t * drv, lv_indev_data_t * data)
 {
     /*Store the collected data*/
     data->point.x = xpos;
     data->point.y = ypos;
     data->state = (button == BUTTON_L) ? LV_INDEV_STATE_PR : LV_INDEV_STATE_REL;
-    return ;
+    return false;
 }
 
 /**********************
