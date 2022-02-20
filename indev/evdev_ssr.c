@@ -76,7 +76,8 @@ void evdev_init(int screen_width, int screen_height)
 {
     mouse_setrange(0, 0, screen_width, screen_height);
 
-    ST_Fb_InitMouse(32, 32, 2, (unsigned char*)"./cursor-arrow.dat");
+    //ST_Fb_InitMouse(32, 32, 2, (unsigned char*)"./cursor-arrow.dat");
+    ST_Fb_InitMouse(32, 32, 2, NULL);
     ST_Fb_MouseSet(screen_width/2, screen_height/2);
 
     pthread_create(&g_mouse_user_pt, NULL, ST_FBMouseUserProc, NULL);
@@ -240,7 +241,7 @@ static void *ST_FBMouseUserProc(void *args)
         if(FD_ISSET(fd, &readfds)) {
             IMPS2_Read(fd, &dx, &dy, &dz, &button);
             mouse_update(dx, dy, dz);
-            ST_Fb_MouseSet(xpos, ypos);
+            //ST_Fb_MouseSet(xpos, ypos);
             //printf("[%04x, %04x, %04x\n]\n", xpos, ypos, button);
         }
     }
