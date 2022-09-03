@@ -106,6 +106,13 @@ bool evdev_read(lv_indev_drv_t * drv, lv_indev_data_t * data)
     return false;
 }
 
+bool mouse_key_read(lv_indev_drv_t * drv, lv_indev_data_t * data)
+{
+    data->key = (button == BUTTON_R)? LV_KEY_HOME : 0x00;
+    data->state = (button == BUTTON_R) ? LV_INDEV_STATE_PR : LV_INDEV_STATE_REL;
+    return false;
+}
+
 /**********************
  *   STATIC FUNCTIONS
  **********************/

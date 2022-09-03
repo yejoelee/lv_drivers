@@ -58,6 +58,7 @@ bool evdev_set_file(char* dev_name);
  * @return false: because the points are not buffered, so no more data to be read
  */
 bool evdev_read(lv_indev_drv_t * drv, lv_indev_data_t * data);
+bool mouse_key_read(lv_indev_drv_t * drv, lv_indev_data_t * data);
 
 
 /**********************
